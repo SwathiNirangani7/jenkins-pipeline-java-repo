@@ -4,7 +4,6 @@ pipeline {
         stage('build') {
             steps {
                  echo 'Building java code'
-                 build jenkins.java
             }
         }
          stage('test') {
