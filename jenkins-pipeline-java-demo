@@ -15,7 +15,7 @@ timeout(time: 1, unit: 'MINUTES')
 steps {
 
  
-input('Do you want to proceed?')
+input('Do you want to proceed?'){
         stage('build') {
             steps {
                  echo 'Building java code'
@@ -55,4 +55,5 @@ input('Do you want to proceed?')
             echo 'This will only be executed on change'
         }
     }
+}
 }
