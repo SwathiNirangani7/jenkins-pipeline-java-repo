@@ -1,6 +1,21 @@
 pipeline {
     agent any
-    stages {
+    stage('Input') {
+
+ 
+options {
+
+ 
+timeout(time: 1, unit: 'MINUTES')
+
+ 
+}
+
+ 
+steps {
+
+ 
+input('Do you want to proceed?')
         stage('build') {
             steps {
                  echo 'Building java code'
