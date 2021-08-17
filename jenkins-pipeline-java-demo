@@ -36,6 +36,5 @@ pipeline {
         changed {
             echo 'This will only be executed on change'
         }
-        }
     }
 }
