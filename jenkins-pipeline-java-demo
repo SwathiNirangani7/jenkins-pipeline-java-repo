@@ -1,50 +1,45 @@
 pipeline {
     agent any
-    stage{
-steps {
-
- 
-input('Do you want to proceed?'){
-        stage('build') {
+    stages {
+        stage('Build') {
             steps {
-                 echo 'Building java code'
-                 sh '''javac jenkins.java
-                 java jenkins
-                 '''
-                 //echo 'Fail!';exit 1
+                echo 'Building java source code..'
+		sh '''javac jenkins.java
+		java jenkins
+		'''
+		 //echo 'Fail!'; exit 1
             }
         }
-         stage('test') {
+        stage('Test') {
             steps {
-                 echo 'Testing java source code'
+                echo 'Testing java source code'
             }
         }
-         stage('package') {
+        stage('package') {
             steps {
-                 echo 'Creating java package'
+                echo 'Creating java package'
             }
         }
-         stage('deploy') {
-            steps {
-                 echo 'Deploying java package'
+	stage('deploy') {
+		steps {
+			echo 'Deploying java package....'
+		}
             }
         }
-    }
+    
     post {
         always {
-            echo 'This code will always be executed'
+            echo 'This code will always run'
         }
         success {
-            echo 'This code will only executed on success'
+            echo 'This code will only be executed on success'
         }
         failure {
             echo 'This code will only be executed on failure'
         }
         changed {
-            echo 'This will only be executed on change'
+            echo 'This code will only be executed on change.'
         }
     }
-}
-}
 }
 
