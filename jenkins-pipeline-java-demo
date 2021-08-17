@@ -4,6 +4,7 @@ pipeline {
         stage('build') {
             steps {
                  echo 'Building java code'
+                 echo 'Welcome to the world of Jenkins pipeline with Java'
             }
         }
          stage('test') {
