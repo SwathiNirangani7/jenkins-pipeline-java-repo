@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                 echo 'Building java code'
+                 execute jenkins.java
+            }
+        }
+         stage('test') {
+            steps {
+                 echo 'Testing java source code'
+            }
+        }
+         stage('package') {
+            steps {
+                 echo 'Creating java package'
+            }
+        }
+         stage('deploy') {
+            steps {
+                 echo 'Deploying java package'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'This code will always be executed'
+        }
+        success {
+            echo 'This code will only executed on success'
+        }
+        failure {
+            echo 'This code will only be executed on failure'
+        }
+        Changed {
+            echo 'This will only be executed on change'
+        }
+        changed {
+            echo 'This will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
+        }
+    }
+}
